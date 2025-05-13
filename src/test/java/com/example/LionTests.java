@@ -61,9 +61,12 @@ public class LionTests {
     public void getFoodIsCorrect() throws Exception {
         Lion lion = new Lion(feline, "Самец");
         List<String> expectedListOfFood = List.of("Пища");
-        Mockito.when(feline.eatMeat()).thenReturn(expectedListOfFood);
 
-        MatcherAssert.assertThat("Некорректный список еды",
+        // Подменяем именно метод getFood с параметром "Хищник"
+        Mockito.when(feline.getFood("Хищник")).thenReturn(expectedListOfFood);
+
+        MatcherAssert.assertThat(
+                "Некорректный список еды",
                 lion.getFood(),
                 equalTo(expectedListOfFood)
         );
