@@ -1,13 +1,12 @@
 package com.example;
 
-import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.List;
+import static org.junit.Assert.assertTrue;
 
-import static org.hamcrest.CoreMatchers.equalTo;
+import java.util.List;
 
 /**
  * Тестовый класс для проверки метода getFood() класса Animal
@@ -54,9 +53,7 @@ public class AnimalParameterizedTests {
      */
     @Test
     public void getFoodIsCorrect() throws Exception {
-        MatcherAssert.assertThat("Неправильный набор еды",
-                new Animal().getFood(animalKind),
-                equalTo(this.expectedListOfFood)
-        );
+        assertTrue("Неправильный набор еды",
+                new Animal().getFood(animalKind).equals(expectedListOfFood));
     }
 }

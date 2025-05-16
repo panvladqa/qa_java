@@ -1,19 +1,14 @@
 package com.example;
 
-import org.hamcrest.MatcherAssert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
-import java.util.List;
-import java.util.Objects;
-
-import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Параметризованный тестовый класс для проверки корректности метода doesHaveMane()
@@ -60,9 +55,7 @@ public class LionParameterizedTests {
      */
     @Test
     public void doesHaveManeIsCorrect() throws Exception {
-        MatcherAssert.assertThat("Грива есть только у льва",
-                new Lion(feline, this.sex).doesHaveMane(),
-                equalTo(hasMane)
-        );
+        assertTrue("Грива есть только у льва",
+                new Lion(feline, this.sex).doesHaveMane() == hasMane);
     }
 }

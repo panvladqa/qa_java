@@ -1,6 +1,5 @@
 package com.example;
 
-import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -8,7 +7,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Тестовый класс для проверки корректности работы методов класса LionAlex.
@@ -25,10 +24,8 @@ public class LionAlexTests {
      */
     @Test
     public void getKittensIsAlwaysZero() throws Exception {
-        MatcherAssert.assertThat("У льва Алекса не может быть котят",
-                new LionAlex(feline).getKittens(),
-                equalTo(0)
-        );
+        assertTrue("У льва Алекса не может быть котят",
+                new LionAlex(feline).getKittens() == 0);
     }
 
     /**
@@ -36,10 +33,8 @@ public class LionAlexTests {
      */
     @Test
     public void getPlaceOfLivingIsCorrect() throws Exception {
-        MatcherAssert.assertThat("Лев Алекс живёт не там",
-                new LionAlex(feline).getPlaceOfLiving(),
-                equalTo("Нью-Йоркский зоопарк")
-        );
+        assertTrue("Лев Алекс живёт не там",
+                new LionAlex(feline).getPlaceOfLiving().equals("Нью-Йоркский зоопарк"));
     }
 
     /**
@@ -52,9 +47,7 @@ public class LionAlexTests {
                 "Бегемотиха Глория",
                 "Жираф Мелман"
         );
-        MatcherAssert.assertThat("Неправильный список друзей",
-                new LionAlex(feline).getFriends(),
-                equalTo(expectedList)
-        );
+        assertTrue("Неправильный список друзей",
+                new LionAlex(feline).getFriends().equals(expectedList));
     }
 }
